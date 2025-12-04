@@ -17,4 +17,45 @@
 
         const root = ReactDOM.createRoot(document.getElementById("root"));
 
-        root.render(heading);
+           root.render(heading);
+
+        /*
+         <div id="parent">
+            <div id="child">
+                <h1>I'm h1 tag</h1>
+                <h1>I'm h1 tag</h1
+            </div>
+             <div id="child2">
+                <h1>I'm h1 tag</h1>
+                <h1>I'm h1 tag</h1
+            </div>
+        </div>
+        
+        Creating a nested element like what we above in React? 
+        
+        we first create a parent
+
+        */
+       const parent = React.createElement(
+        "div", /*first argument <the parent div> */
+
+        {id: "parent"},/*second argument <our div attribute for styling> */
+
+
+        /*third argument <the children of our <div> because the child has siblings we rap it up in an array> */
+
+        [
+            React.createElement("div", {id: "child"}, [
+                React.createElement("h1", {}, "Hi I'm h1 and I'm alive"),
+                React.createElement("p", {}, "Hi I'm p and I'm alive")
+            ]),
+
+            React.createElement("div", {id: "child"}, [
+                React.createElement("h2", {}, "Hi I'm h2 and I'm alive"),
+                React.createElement("p", {}, "Hi I'm p and I'm alive")
+            ])
+        ]
+);
+
+       root.render(parent);
+
